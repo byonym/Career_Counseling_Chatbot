@@ -37,7 +37,7 @@ def chatbot_response(msg):
     engine = create_engine(conn_str)
     db = SQLDatabase(engine)
     # Instantiate the ChatOpenAI model
-    llm = ChatOpenAI(model_name="gpt-3.5-turbo")
+    llm = ChatOpenAI(model_name="gpt-3.5-turbo-16k-0613")
 
     # Initialize the SQLDatabaseToolkit with the SQLAlchemy engine
     toolkit = SQLDatabaseToolkit(db=db, llm=llm)
@@ -62,7 +62,7 @@ app = Flask(__name__)
 app.template_folder = 'templates'
 app.static_folder = 'templates'
 
-os.environ['OPENAI_API_KEY'] = "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"
+os.environ['OPENAI_API_KEY'] = "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"
 db_user = "postgres"
 db_password = "postgres"
 db_host = "apan5400db.cv57tdjwt2lt.us-east-1.rds.amazonaws.com"
@@ -83,4 +83,4 @@ def get_bot_response():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(port = "5002")
